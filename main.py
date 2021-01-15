@@ -20,8 +20,7 @@ print(user.location)
 
 
 def follow_followers():
-    # api.update_status("First tweept from code")
-    for follower in api.followers('bitconbot'):
+    for follower in api.followers(user.screen_name):
         try:
             # follower.follow()
             print('follower ' + follower.screen_name)
@@ -45,15 +44,7 @@ def call_api():
     return bitcoin_price
 
 
-def tweet_bitcoin_price():
-    count = 24
-    while count > 0:
-        api.update_status(call_api())
-        count = count - 1
-        sleep(3600)
-
-
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    #  follow_followers()
-    tweet_bitcoin_price()
+    follow_followers()
+    api.update_status(call_api())
