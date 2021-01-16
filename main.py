@@ -15,32 +15,35 @@ auth.set_access_token(access_token, access_secret)
 api = tp.API(auth)
 
 user = api.me()
-print(user.name)
-print(user.location)
+
 
 
 def follow_followers():
     for follower in api.followers(user.screen_name):
         try:
-            # follower.follow()
-            print('follower ' + follower.screen_name)
-            # api.create_friendship(follower.screen_name)
-            print('following ' + follower)
+            follow_back(follower)
         except:
             print("No more followers to follow")
 
 
+def follow_back(follower):
+    if follower.following:
+        return
+    api.create_friendship(follower.id)
+
+
 def call_api():
     response = requests.get('https://api.coindesk.com/v1/bpi/currentprice.json').json()
-    print(response)
     response = str(response)
     response = response.replace("\'", "\"")
     middle_man = json.loads(response)
-    print('disclaimer ' + middle_man["disclaimer"])
     usd_amt = middle_man["bpi"]["USD"]["rate"]
     usd_amt = usd_amt[:-2]
-    print('USD Amount $' + usd_amt)
-    bitcoin_price = 'Current Bitcoin Price: USD $' + usd_amt
+    gbp_amt = middle_man["bpi"]["GBP"]["rate"]
+    gbp_amt = gbp_amt[:-2]
+    eur_amt = middle_man["bpi"]["EUR"]["rate"]
+    eur_amt = eur_amt[:-2]
+    bitcoin_price = 'Current Bitcoin Price:\nUSD $' + usd_amt + '\nGBP £' + gbp_amt + '\nEuro €' + eur_amt + '\n#bitcoin'
     return bitcoin_price
 
 
