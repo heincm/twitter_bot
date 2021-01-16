@@ -55,7 +55,7 @@ def call_api():
     gbp_amt = gbp_amt[:-2]
     eur_amt = middle_man["bpi"]["EUR"]["rate"]
     eur_amt = eur_amt[:-2]
-    bitcoin_price = 'Current Bitcoin Price:\nUSD $' + usd_amt + '\nGBP £' + gbp_amt + '\nEuro €' + eur_amt + '\n#bitcoin'
+    bitcoin_price = 'Current Bitcoin Price:\nUSD $' + usd_amt + '\nGBP £' + gbp_amt + '\nEuro €' + eur_amt + '\n#bitcoin #btc $btc #btcusd #btcgbp #btceur #crypto #cryptocurrency'
     return bitcoin_price
 
 
