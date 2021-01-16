@@ -32,6 +32,18 @@ def follow_back(follower):
     api.create_friendship(follower.id)
 
 
+def look_for_mentions():
+    for mention in api.mentions_timeline():
+        try:
+            if mention.author.following:
+                return
+            # api.create_friendship(mention.author.id)
+            #api.send_direct_message(mention.author.screen_name)
+                api.update_status("hello there :) @ChrisMHein")
+        except:
+            print('something went wrong')
+
+
 def call_api():
     response = requests.get('https://api.coindesk.com/v1/bpi/currentprice.json').json()
     response = str(response)
@@ -51,3 +63,4 @@ def call_api():
 if __name__ == '__main__':
     follow_followers()
     api.update_status(call_api())
+    look_for_mentions()
