@@ -1,9 +1,7 @@
-import os
 import json
 import requests
 import tweepy as tp
 import constants
-from time import sleep
 
 consumer_key = constants.consumer_key
 consumer_secret = constants.consumer_secret
@@ -17,7 +15,6 @@ api = tp.API(auth)
 user = api.me()
 
 
-
 def follow_followers():
     for follower in api.followers(user.screen_name):
         try:
@@ -29,17 +26,18 @@ def follow_followers():
 def follow_back(follower):
     if follower.following:
         return
-    api.create_friendship(follower.id)
+    else:
+        api.create_friendship(follower.id)
+        api.update_status("Hello there, @" + follower.screen_name + ' 👋! Thanks for following! 🤖')
 
 
 def look_for_mentions():
     for mention in api.mentions_timeline():
         try:
-            if mention.author.following:
+            if mention.author.following == True:
                 return
-            # api.create_friendship(mention.author.id)
-            #api.send_direct_message(mention.author.screen_name)
-                api.update_status("hello there :) @ChrisMHein")
+            else:
+                api.create_friendship(mention.author.id)
         except:
             print('something went wrong')
 
