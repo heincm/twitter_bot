@@ -60,7 +60,7 @@ def call_api():
 
 def search_relevant_tweets():
     tag = ("bitcoin", "btc", "crypto", "cryptocurrency", "#bitcoin", "#btc", "$btc")
-    for tweet in tp.Cursor(api.search, tag, result_type="recent", lang="en").items(10):
+    for tweet in tp.Cursor(api.search, tag, result_type="recent", lang="en").items(21):
         try:
             favorite_a_tweet(tweet)
             print("tweet favorited")
