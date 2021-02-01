@@ -3,3 +3,4 @@ venv
 .idea
 twitter_bot.sh
 __pycache__/
+.main.py.swp
