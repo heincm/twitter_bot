@@ -17,11 +17,11 @@ user = api.me()
 
 
 def follow_followers():
-    for follower in api.followers(user.screen_name):
-        try:
-            follow_back(follower)
-        except:
-            print("No more followers to follow")
+    follower = api.followers(user.screen_name)[0]
+    try:
+        follow_back(follower)
+    except:
+        print("No more followers to follow")
 
 
 def follow_back(follower):
