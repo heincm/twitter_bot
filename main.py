@@ -84,7 +84,7 @@ def check_time():
 
     if two_after_the_hour < now < sometime_after_the_hour:
         return search_relevant_tweets()
-    print("out of range")
+    print("Not searching for relevant tweets because it is not between 52 and 57 minutes after the hour")
 
 
 # Press the green button in the gutter to run the script.
