@@ -44,7 +44,7 @@ def look_for_mentions():
 
 
 def call_api():
-    response = requests.get('https://api.coindesk.com/v1/bpi/currentprice.json').json()
+    response = requests.get('http://api.coindesk.com/v1/bpi/currentprice.json').json()
     response = str(response)
     response = response.replace("\'", "\"")
     middle_man = json.loads(response)
