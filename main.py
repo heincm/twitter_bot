@@ -29,7 +29,7 @@ def follow_back(follower):
         return
     else:
         api.create_friendship(follower.id)
-        api.update_status("Hello there, @" + follower.screen_name + ' 👋! Thanks for following! 🤖')
+        api.update_status("Hello there, @" + follower.screen_name + ' \U0001F44B! Thanks for following! \U0001F916')
 
 
 def look_for_mentions():
